@@ -1,124 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Smart Chatbot</title>
-
-<style>
-
-body{
-font-family: Arial;
-background: linear-gradient(135deg,#667eea,#764ba2);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.chat-container{
-width:420px;
-background:white;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-overflow:hidden;
-}
-
-.header{
-background:#6c63ff;
-color:white;
-padding:15px;
-font-size:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-#messages{
-height:350px;
-padding:15px;
-overflow-y:auto;
-background:#f7f7f7;
-}
-
-.message{
-margin:10px 0;
-padding:10px 15px;
-border-radius:20px;
-max-width:75%;
-}
-
-.user{
-background:#6c63ff;
-color:white;
-margin-left:auto;
-}
-
-.bot{
-background:#e4e6eb;
-}
-
-.input-area{
-display:flex;
-border-top:1px solid #ddd;
-}
-
-input{
-flex:1;
-border:none;
-padding:15px;
-font-size:15px;
-}
-
-button{
-border:none;
-padding:15px;
-cursor:pointer;
-}
-
-.send-btn{
-background:#6c63ff;
-color:white;
-}
-
-.voice-btn{
-background:#28a745;
-color:white;
-}
-
-.toggle{
-cursor:pointer;
-font-size:18px;
-}
-
-.dark{
-background:#1e1e1e;
-color:white;
-}
-
-.dark #messages{
-background:#2a2a2a;
-}
-
-</style>
-
+<title>AI Chatbot</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="chat-container" id="chatContainer">
+<h1>🤖 AI Chatbot</h1>
 
-<div class="header">
-🤖 AI Chatbot
-<span class="toggle" onclick="toggleMode()">🌙</span>
-</div>
-
-<div id="messages"></div>
+<div id="chatBox" class="chat-box"></div>
 
 <div class="input-area">
-<input type="text" id="userInput" placeholder="Ask anything..." onkeypress="handleKey(event)">
-<button class="voice-btn" onclick="startVoice()">🎤</button>
-<button class="send-btn" onclick="sendMessage()">Send</button>
-</div>
-
+<input type="text" id="userInput" placeholder="Ask anything...">
+<button onclick="sendMessage()">Send</button>
 </div>
 
 <script src="script.js"></script>

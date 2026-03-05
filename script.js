@@ -1,63 +1,29 @@
-function sendMessage(){
+async function sendMessage() {
 
-let inputBox=document.getElementById("userInput");
-let input=inputBox.value.trim().toLowerCase();
-let messages=document.getElementById("messages");
+const input = document.getElementById("userInput");
+const message = input.value;
 
-if(input==="") return;
+const chatBox = document.getElementById("chatBox");
 
-messages.innerHTML+=`<div class="message user">${input}</div>`;
+chatBox.innerHTML += `<div class="user-msg"> ${message} </div>`;
 
-let typing=`<div class="message bot" id="typing">Typing...</div>`;
-messages.innerHTML+=typing;
-messages.scrollTop=messages.scrollHeight;
+try {
 
-setTimeout(()=>{
+const response = await fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${message}&botname=AlekyaBot&ownername=Alekya`);
 
-document.getElementById("typing").remove();
+const data = await response.json();
 
-let reply="I'm still learning 🤖";
+chatBox.innerHTML += `<div class="bot-msg"> ${data.message} </div>`;
 
-if(input.includes("ai")){
-reply="Artificial Intelligence allows machines to simulate human intelligence.";
-}
-else if(input.includes("machine learning")||input.includes("ml")){
-reply="Machine learning is a subset of AI where systems learn from data.";
-}
-else if(input.includes("python")){
-reply="Python was created by Guido van Rossum.";
-}
-else if(input.includes("react")){
-reply="React is a JavaScript library for building user interfaces.";
 }
 
-messages.innerHTML+=`<div class="message bot">${reply}</div>`;
-messages.scrollTop=messages.scrollHeight;
+catch{
 
-},1000);
+chatBox.innerHTML += `<div class="bot-msg">Error getting response</div>`;
 
-inputBox.value="";
 }
 
-function handleKey(e){
-if(e.key==="Enter"){
-sendMessage();
-}
-}
+input.value="";
+chatBox.scrollTop = chatBox.scrollHeight;
 
-function toggleMode(){
-document.getElementById("chatContainer").classList.toggle("dark");
-}
-
-function startVoice(){
-
-let recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
-
-recognition.onresult=function(event){
-let voiceText=event.results[0][0].transcript;
-document.getElementById("userInput").value=voiceText;
-sendMessage();
-}
-
-recognition.start();
 }
