@@ -1,52 +1,31 @@
-let responses = {};
+const API_KEY = "AIzaSyCKVFRDFW8PYPSGJNawZgYi5d8eAereSYQ";
 
-fetch("responses.json")
-.then(res => res.json())
-.then(data => responses = data);
+async function sendMessage(){
 
-// ENTER key support
-document.getElementById("userInput")
-.addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        sendMessage();
-    }
+let input = document.getElementById("userInput").value;
+let messages = document.getElementById("messages");
+
+messages.innerHTML += `<p><b>You:</b> ${input}</p>`;
+
+let response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+contents:[{
+parts:[{text:input}]
+}]
+})
 });
 
-function sendMessage() {
+let data = await response.json();
 
-    let input = document.getElementById("userInput");
-    let message = input.value.toLowerCase().trim();
+let reply = data.candidates[0].content.parts[0].text;
 
-    if(message === "") return;
+messages.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
 
-    addMessage(message, "user");
+document.getElementById("userInput").value="";
+messages.scrollTop = messages.scrollHeight;
 
-    input.value="";
-
-    // typing animation
-    let typing = addMessage("Typing...", "bot");
-
-    setTimeout(()=>{
-        typing.remove();
-
-        let reply = responses[message] ||
-        "I am still learning 🤖. Please ask something else.";
-
-        addMessage(reply, "bot");
-
-    },1000);
-}
-
-function addMessage(text, sender){
-
-    let chatbox = document.getElementById("chatbox");
-
-    let div = document.createElement("div");
-    div.className = sender;
-    div.innerText = text;
-
-    chatbox.appendChild(div);
-    chatbox.scrollTop = chatbox.scrollHeight;
-
-    return div;
 }
