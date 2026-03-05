@@ -1,17 +1,28 @@
-async function sendMessage() {
+async function sendMessage(){
 
-const input = document.getElementById("userInput");
-const message = input.value;
+let input=document.getElementById("userInput");
+let message=input.value;
 
-const chatBox = document.getElementById("chatBox");
+let messages=document.getElementById("messages");
 
-chatBox.innerHTML += `<div class="user-msg">${message}</div>`;
+messages.innerHTML+=`<div class="user">You: ${message}</div><br>`;
 
-const response = await fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${message}`);
+try{
 
-const data = await response.json();
+let response=await fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${message}&botname=AIbot`);
 
-chatBox.innerHTML += `<div class="bot-msg">${data.message}</div>`;
+let data=await response.json();
+
+messages.innerHTML+=`<div class="bot">Bot: ${data.message}</div><br>`;
+
+}
+
+catch{
+
+messages.innerHTML+=`<div class="bot">Bot: Error getting response</div><br>`;
+
+}
 
 input.value="";
+
 }
