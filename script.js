@@ -1,43 +1,44 @@
-const API_KEY = "AIzaSyCKVFRDFW8PYPSGJNawZgYi5d8eAereSYQ";
+let faqData = [
+  {
+    question: "what is ai",
+    answer: "Artificial Intelligence allows machines to simulate human intelligence."
+  },
+  {
+    question: "what is machine learning",
+    answer: "Machine learning is a subset of AI that enables systems to learn from data."
+  },
+  {
+    question: "what is deep learning",
+    answer: "Deep learning is a branch of machine learning based on neural networks."
+  },
+  {
+    question: "who created python",
+    answer: "Python was created by Guido van Rossum in 1991."
+  },
+  {
+    question: "what is react",
+    answer: "React is a JavaScript library used to build user interfaces."
+  }
+];
 
-async function sendMessage(){
+function sendMessage() {
 
-let input = document.getElementById("userInput").value;
+let input = document.getElementById("userInput").value.toLowerCase();
 let messages = document.getElementById("messages");
 
 messages.innerHTML += "<p><b>You:</b> " + input + "</p>";
 
-try{
+let bestAnswer = "I am still learning 🤖. Please ask another question.";
 
-let response = await fetch(
-"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-contents:[
-{
-parts:[{text:input}]
+faqData.forEach(item => {
+if(input.includes(item.question)){
+bestAnswer = item.answer;
 }
-]
-})
 });
 
-let data = await response.json();
+messages.innerHTML += "<p><b>Bot:</b> " + bestAnswer + "</p>";
 
-let reply = data.candidates[0].content.parts[0].text;
-
-messages.innerHTML += "<p><b>Bot:</b> " + reply + "</p>";
-
-}catch(error){
-
-messages.innerHTML += "<p><b>Bot:</b> Error getting response.</p>";
-
-}
-
-document.getElementById("userInput").value="";
+document.getElementById("userInput").value = "";
 messages.scrollTop = messages.scrollHeight;
 
 }
