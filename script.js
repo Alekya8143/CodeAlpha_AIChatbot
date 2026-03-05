@@ -1,28 +1,64 @@
 function sendMessage(){
 
-let input = document.getElementById("userInput");
-let message = input.value;
+let input=document.getElementById("userInput");
+let message=input.value.toLowerCase();
 
-let messages = document.getElementById("messages");
+if(message==="") return;
 
-messages.innerHTML += "<p><b>You:</b> " + message + "</p>";
+let messages=document.getElementById("messages");
 
-let reply = "I don't understand. Try asking about AI or Python.";
+messages.innerHTML+=`<div class="user">${message}</div>`;
 
-if(message.toLowerCase().includes("ai")){
-reply = "Artificial Intelligence allows machines to think and learn.";
+let reply="I am still learning. Ask something about AI, Python, or technology.";
+
+if(message.includes("hello") || message.includes("hi")){
+reply="Hello! How can I help you today?";
 }
 
-else if(message.toLowerCase().includes("hello")){
-reply = "Hello! How can I help you?";
+else if(message.includes("ai")){
+reply="Artificial Intelligence allows machines to simulate human intelligence.";
 }
 
-else if(message.toLowerCase().includes("python")){
-reply = "Python is a programming language widely used in AI.";
+else if(message.includes("machine learning")){
+reply="Machine learning is a subset of AI where computers learn from data.";
 }
 
-messages.innerHTML += "<p><b>Bot:</b> " + reply + "</p>";
+else if(message.includes("python")){
+reply="Python is a powerful programming language widely used in AI and data science.";
+}
 
-input.value = "";
+else if(message.includes("who are you")){
+reply="I am an AI Smart Chatbot created by Alekya for the CodeAlpha Internship.";
+}
 
+messages.innerHTML+=`<div class="bot">${reply}</div>`;
+
+input.value="";
+
+messages.scrollTop=messages.scrollHeight;
+
+}
+
+
+function startVoice(){
+
+let recognition=new webkitSpeechRecognition();
+
+recognition.onresult=function(event){
+
+let text=event.results[0][0].transcript;
+
+document.getElementById("userInput").value=text;
+
+sendMessage();
+
+}
+
+recognition.start();
+
+}
+
+
+function toggleDark(){
+document.body.classList.toggle("dark");
 }
