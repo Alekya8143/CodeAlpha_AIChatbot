@@ -1,63 +1,63 @@
 function sendMessage(){
 
-let input=document.getElementById("userInput");
-let message=input.value.toLowerCase();
+let input = document.getElementById("userInput");
+let message = input.value;
 
-if(message==="") return;
+if(message === "") return;
 
-let messages=document.getElementById("messages");
+let messages = document.getElementById("messages");
 
-messages.innerHTML+=`<div class="user">${message}</div>`;
+messages.innerHTML += `<div class="user">${message}</div>`;
 
-let reply="I am still learning. Ask something about AI, Python, or technology.";
+let reply = "I am still learning. Ask something about AI or Python.";
 
-if(message.includes("hello") || message.includes("hi")){
-reply="Hello! How can I help you today?";
+let text = message.toLowerCase();
+
+if(text.includes("hello") || text.includes("hi")){
+reply = "Hello! How can I help you?";
 }
 
-else if(message.includes("ai")){
-reply="Artificial Intelligence allows machines to simulate human intelligence.";
+else if(text.includes("ai")){
+reply = "Artificial Intelligence allows machines to simulate human intelligence.";
 }
 
-else if(message.includes("machine learning")){
-reply="Machine learning is a subset of AI where computers learn from data.";
+else if(text.includes("machine learning")){
+reply = "Machine learning is a branch of AI where systems learn from data.";
 }
 
-else if(message.includes("python")){
-reply="Python is a powerful programming language widely used in AI and data science.";
+else if(text.includes("python")){
+reply = "Python is a popular programming language used in AI.";
 }
 
-else if(message.includes("who are you")){
-reply="I am an AI Smart Chatbot created by Alekya for the CodeAlpha Internship.";
+else if(text.includes("who are you")){
+reply = "I am an AI chatbot created by Alekya.";
 }
 
-messages.innerHTML+=`<div class="bot">${reply}</div>`;
+messages.innerHTML += `<div class="bot">${reply}</div>`;
 
-input.value="";
+input.value = "";
 
-messages.scrollTop=messages.scrollHeight;
+messages.scrollTop = messages.scrollHeight;
 
 }
-
 
 function startVoice(){
 
-let recognition=new webkitSpeechRecognition();
+let recognition = new webkitSpeechRecognition();
 
-recognition.onresult=function(event){
+recognition.onresult = function(event){
 
-let text=event.results[0][0].transcript;
+let text = event.results[0][0].transcript;
 
-document.getElementById("userInput").value=text;
+document.getElementById("userInput").value = text;
 
 sendMessage();
 
-}
+};
 
 recognition.start();
 
 }
-
 
 function toggleDark(){
 document.body.classList.toggle("dark");
