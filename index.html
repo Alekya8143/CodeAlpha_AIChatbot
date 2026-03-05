@@ -1,75 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
 <title>AI Smart Chatbot</title>
-<link rel="stylesheet" href="style.css">
 
 <style>
 
 body{
 font-family:Arial;
-background:#f4f4f4;
+background:#6a11cb;
+background:linear-gradient(to right,#6a11cb,#2575fc);
 text-align:center;
-transition:0.3s;
-}
-
-.dark{
-background:#121212;
-color:white;
+padding-top:50px;
 }
 
 .chatbox{
-width:420px;
+width:400px;
 margin:auto;
 background:white;
 padding:20px;
-border-radius:15px;
-box-shadow:0 0 15px gray;
-}
-
-.dark .chatbox{
-background:#1e1e1e;
+border-radius:10px;
 }
 
 #messages{
-height:320px;
+height:250px;
 overflow-y:auto;
 border:1px solid #ddd;
 padding:10px;
 margin-bottom:10px;
-display:flex;
-flex-direction:column;
-}
-
-.user{
-background:#4facfe;
-color:white;
-padding:10px;
-border-radius:20px;
-margin:5px;
-align-self:flex-end;
-max-width:70%;
-}
-
-.bot{
-background:#e5e5ea;
-padding:10px;
-border-radius:20px;
-margin:5px;
-align-self:flex-start;
-max-width:70%;
+text-align:left;
 }
 
 input{
-width:60%;
+width:65%;
 padding:10px;
 }
 
 button{
 padding:10px;
-margin:3px;
-cursor:pointer;
 }
 
 </style>
@@ -80,21 +48,18 @@ cursor:pointer;
 
 <h2>🤖 AI Smart Chatbot</h2>
 
-<button onclick="toggleDark()">🌙</button>
-
 <div class="chatbox">
 
 <div id="messages"></div>
 
-<input type="text" id="userInput" placeholder="Ask anything..." />
+<input id="userInput" placeholder="Ask something">
 
 <button onclick="sendMessage()">Send</button>
-
-<button onclick="startVoice()">🎤</button>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
