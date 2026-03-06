@@ -41,7 +41,9 @@ AIChatbot/
 
 🤖 AI Chatbot Live Demo
 
-👉 https://alekya8143.github.io/codealpha_ai_chatbot/
+👉 Live Demo:
+
+https://Alekya8143.github.io/CodeAlpha_AIChatbot/
 
 
 ▶️ How to Run the Project
