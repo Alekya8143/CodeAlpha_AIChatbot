@@ -44,7 +44,7 @@ AIChatbot/
 
 1️⃣ Clone the repository
 
-git clone https://github.com/yourusername/CodeAlpha_AIChatbot.git
+git clone https://github.com/Alekya8143/CodeAlpha_ObjectDetection
 
 2️⃣ Install dependencies
 
