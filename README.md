@@ -39,6 +39,10 @@ AIChatbot/
 ├── package.json
 └── README.md
 
+🤖 AI Chatbot Live Demo
+
+👉 https://alekya8143.github.io/codealpha_ai_chatbot/
+
 
 ▶️ How to Run the Project
 
