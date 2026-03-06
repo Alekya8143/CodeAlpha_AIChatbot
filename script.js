@@ -16,24 +16,28 @@ let text = message.toLowerCase();
 if(text.includes("hello") || text.includes("hi")){
 reply = "Hello! How can I help you?";
 }
-
 else if(text.includes("ai")){
 reply = "Artificial Intelligence allows machines to simulate human intelligence.";
 }
-
 else if(text.includes("machine learning")){
 reply = "Machine learning is a branch of AI where systems learn from data.";
 }
-
 else if(text.includes("python")){
 reply = "Python is a popular programming language used in AI.";
 }
-
 else if(text.includes("who are you")){
 reply = "I am an AI chatbot created by Alekya.";
 }
 
-messages.innerHTML += `<div class="bot">${reply}</div>`;
+messages.innerHTML += `<div class="bot">Typing...</div>`;
+
+setTimeout(function(){
+
+messages.innerHTML += `<div class="bot">🤖 ${reply}</div>`;
+
+messages.scrollTop = messages.scrollHeight;
+
+},1000);
 
 input.value = "";
 
@@ -61,4 +65,16 @@ recognition.start();
 
 function toggleDark(){
 document.body.classList.toggle("dark");
+}
+
+// Enter key send message
+document.getElementById("userInput").addEventListener("keypress", function(event){
+if(event.key === "Enter"){
+sendMessage();
+}
+});
+
+// Clear chat function
+function clearChat(){
+document.getElementById("messages").innerHTML="";
 }
