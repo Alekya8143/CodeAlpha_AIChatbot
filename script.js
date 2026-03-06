@@ -1,14 +1,39 @@
+window.onload = function(){
+let messages = document.getElementById("messages");
+
+let botMsg = document.createElement("div");
+botMsg.className = "bot";
+botMsg.innerText = "Hello 👋 I am your AI Smart Chatbot. Ask me anything about AI, technology, coding or programming.";
+
+messages.appendChild(botMsg);
+}
+
 function sendMessage(){
 
 let input = document.getElementById("userInput");
-let message = input.value;
+let message = input.value.trim();
 
 if(message === "") return;
 
 let messages = document.getElementById("messages");
 
-messages.innerHTML += `<div class="user">${message}</div>`;
+// User message
+let userMsg = document.createElement("div");
+userMsg.className = "user";
+userMsg.innerText = message;
+messages.appendChild(userMsg);
 
+
+// Typing animation
+let typing = document.createElement("div");
+typing.className = "bot typing";
+typing.innerText = "Typing...";
+messages.appendChild(typing);
+
+messages.scrollTop = messages.scrollHeight;
+
+
+// Bot logic
 let reply = "I am still learning. Ask something about AI or Python.";
 
 let text = message.toLowerCase();
@@ -29,11 +54,17 @@ else if(text.includes("who are you")){
 reply = "I am an AI chatbot created by Alekya.";
 }
 
-messages.innerHTML += `<div class="bot">Typing...</div>`;
 
+// Bot reply after delay
 setTimeout(function(){
 
-messages.innerHTML += `<div class="bot">🤖 ${reply}</div>`;
+typing.remove();
+
+let botMsg = document.createElement("div");
+botMsg.className = "bot";
+botMsg.innerText = "🤖 " + reply;
+
+messages.appendChild(botMsg);
 
 messages.scrollTop = messages.scrollHeight;
 
@@ -41,10 +72,10 @@ messages.scrollTop = messages.scrollHeight;
 
 input.value = "";
 
-messages.scrollTop = messages.scrollHeight;
-
 }
 
+
+// Voice input
 function startVoice(){
 
 let recognition = new webkitSpeechRecognition();
@@ -63,18 +94,22 @@ recognition.start();
 
 }
 
+
+// Dark mode
 function toggleDark(){
 document.body.classList.toggle("dark");
 }
 
+
 // Enter key send message
-document.getElementById("userInput").addEventListener("keypress", function(event){
+document.getElementById("userInput").addEventListener("keypress",function(event){
 if(event.key === "Enter"){
 sendMessage();
 }
 });
 
-// Clear chat function
+
+// Clear chat
 function clearChat(){
 document.getElementById("messages").innerHTML="";
 }
