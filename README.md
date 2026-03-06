@@ -1,44 +1,75 @@
- 🤖 AI Smart Chatbot
+ CodeAlpha - AI Chatbot
 
-This project is an **AI Smart Chatbot** developed as part of the **CodeAlpha Internship Program**.
-The chatbot can answer basic questions related to **Artificial Intelligence, Programming, and General Knowledge**.
+📌 Project Overview
 
- 🚀 Features
+This project is a simple **AI Chatbot** that answers user questions interactively.
 
-* 💬 Chat interface with modern chat bubbles
-* 🤖 Predefined AI responses
-* 🎤 Voice input using Speech Recognition
-* 🌙 Dark mode toggle
-* ⌨️ Typing animation for bot replies
-* 📜 Auto-scroll chat messages
-* 🎨 Clean and responsive UI design
+The chatbot can respond to various questions related to:
 
-🛠 Technologies Used
+* Artificial Intelligence
+* Technology
+* General Knowledge
+
+This project was created as part of the **CodeAlpha Artificial Intelligence Internship**.
+
+🚀 Features
+
+* Interactive chatbot interface
+* Real-time user input
+* Instant response generation
+* Simple and clean UI
+
+ 🛠️ Technologies Used
+
 * HTML
 * CSS
 * JavaScript
-  
+* React.js
+
  📂 Project Structure
-CodeAlpha_AIChatbot
+
+AIChatbot/
+
+├── public/
+├── src/
+│   ├── App.js
+│   ├── Chatbot.js
+│   └── styles.css
 │
-├── index.html
-├── style.css
-├── script.js
+├── package.json
 └── README.md
 
+
 ▶️ How to Run the Project
-1. Download or clone the repository
-2. Open the project folder
-3. Run **index.html** in your browser
 
-🌐 Live Demo
+1️⃣ Clone the repository
 
-You can view the live chatbot here:
+git clone https://github.com/yourusername/CodeAlpha_AIChatbot.git
 
-https://Alekya8143.github.io/CodeAlpha_AIChatbot/
+2️⃣ Install dependencies
+
+npm install
+
+3️⃣ Start the application
+
+npm start
+
+💬 Example Questions
+
+Try asking:
+
+* What is Artificial Intelligence?
+* What is Machine Learning?
+* What is Cloud Computing?
+
+The chatbot will generate responses based on predefined knowledge.
+
+ 🎯 Internship Task
+
+This project was developed for the "CodeAlpha Artificial Intelligence Internship Program".
 
 👩‍💻 Author
 
 Alekya Golla
 
-Developed for CodeAlpha Internship Tasks
+Artificial Intelligence Intern at CodeAlpha
